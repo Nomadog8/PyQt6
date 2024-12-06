@@ -8,7 +8,7 @@ class Form(QMainWindow):
 
     def __init__(self):
         super().__init__()
-        uic.loadUi('interface.ui', self)
+        uic.loadUi('UI.ui', self)
 
         self.view = QGraphicsScene()
         self.graphicsView.setScene(self.view)
