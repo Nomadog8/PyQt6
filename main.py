@@ -1,14 +1,16 @@
 import sys
 import random
 from PyQt6.QtWidgets import QMainWindow, QApplication, QGraphicsScene, QGraphicsEllipseItem
+from UI import Ui_MainWindow
 from PyQt6.QtGui import QColor
-from PyQt6 import uic
 
-class Form(QMainWindow):
+
+class Form(QMainWindow, Ui_MainWindow):
 
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)
+
+        self.setupUi(self)
 
         self.view = QGraphicsScene()
         self.graphicsView.setScene(self.view)
@@ -23,8 +25,10 @@ class Form(QMainWindow):
 
             diametr = random.randint(0, 150)
 
+            color = QColor(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+
             circle = QGraphicsEllipseItem(0, 0, diametr, diametr)
-            circle.setBrush(QColor('yellow'))
+            circle.setBrush(color)
             circle.setPos(random.randint(0, 500), random.randint(0, 500))
             self.view.addItem(circle)
 
